@@ -1,7 +1,9 @@
-FROM node:24-alpine AS build
+FROM node:24-alpine AS builder
+
 WORKDIR /app
 
 RUN corepack enable
+
 COPY package*.json .
 RUN npm ci
 COPY . .
@@ -12,8 +14,8 @@ RUN npm prune --production
 FROM node:24-alpine
 WORKDIR /app
 
-COPY --from=build /app/.output/ .
-COPY --from=build /app/node_modules/ node_modules/
+COPY --from=builder /app/.output/ .
+COPY --from=builder /app/node_modules/ node_modules/
 
 EXPOSE 3000
 
