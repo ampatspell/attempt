@@ -1,0 +1,11 @@
+Dockerfile
+.dockerignore
+.git
+.gitignore
+.gitattributes
+README.md
+.eslint.config.mjs
+.nuxt
+.output
+node_modules
+**/.env
