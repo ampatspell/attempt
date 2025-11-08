@@ -17,6 +17,9 @@ WORKDIR /app
 COPY --from=builder /app/.output/ .
 COPY --from=builder /app/node_modules/ node_modules/
 
+ARG PORT=3000
+ENV HOST=0.0.0.0
+
 ENV PORT=3000
 ENV HOST=0.0.0.0
 
