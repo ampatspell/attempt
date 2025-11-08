@@ -12,7 +12,10 @@ RUN npm run build
 RUN npm prune --production
 
 FROM node:24-alpine
+
 WORKDIR /app
+
+RUN apk --no-cache add curl
 
 COPY --from=builder /app/.output/ .
 COPY --from=builder /app/node_modules/ node_modules/
